@@ -75,7 +75,7 @@ Let's dig into what's offered today. Under each option includes a note on where 
 
 ### `process.env.NODE_ENV`
 
-**Support:** Parcel, Rspack, Vite, Webpack.
+**Support:** Parcel, Rspack, Vite, Webpack.<br/>
 **Graceful fallback:** Node.js, deno, bun.
 
 Let's start with the elephant in the room. `NODE_ENV`. It's the hammer everybody reached for because it existed and seemed fine, at first glance.
@@ -92,7 +92,7 @@ It _is_ generaly easy to eliminate by a minifier. That's less true though if you
 
 ### Package Exports `development`
 
-**Support:** Parcel, Rspack, Vite, Webpack.
+**Support:** Parcel, Rspack, Vite, Webpack.<br/>
 **Graceful fallback:** esbuild, `@rollup/plugin-node-resolve`, Node.js, deno, bun.
 
 ```js
@@ -116,7 +116,7 @@ Option 3 would be great if it didn't require that each package maintainer reinve
 
 ### `import.meta.env.DEV`
 
-**Support:** Vite.
+**Support:** Vite.<br/>
 **Graceful fallback:** bun[1].
 
 One of the spiritual successors of `NODE_ENV`. It does have two advantages:
@@ -134,8 +134,8 @@ But there's also some akward aspects.
 
 ### `ngDevMode` (Angular)
 
-**Support:** *Only via plugins or custom configuration.*
-**Graceful fallback:** *Kind of* everywhere.
+**Support:** *Only via plugins or custom configuration.*<br/>
+**Graceful fallback:** Everywhere.
 
 An implementation detail of Angular, so don't tell anybody. In Angular apps, this is used to both enable debug code and also keep some private debug state. The canonical usage looks like this:
 
@@ -149,8 +149,8 @@ Now for the bad news: The `typeof x || x` check is very verbose. And, maybe more
 
 ### `goog.DEBUG` (Closure Compiler)
 
-**Support:** Closure Compiler
-**Graceful fallback:** *Kind of* everywhere.
+**Support:** Closure Compiler<br/>
+**Graceful fallback:** Everywhere.
 
 Finally, an honorable mention for Closure. It actually predates `NODE_ENV`, for what that's worth. For our purposes, `goog.DEBUG` isn't much different from `ngDevMode`: It has a lower collision propability because it's namespaced (`goog.`). But because of that nesting, defensive code is harder to write in a way that optimizes well after down-leveling.
 
@@ -166,11 +166,14 @@ Which means that it defaults to `true` instead of being off by default.
 
 ## `import.meta.DEBUG`
 
-The heading is a bit of a spoiler - let's recap first. A good guard for debug code should:
+**Support:** TBD.<br/>
+**Graceful fallback:** Everywhere.
 
-1. Easy to use by developers with a "pit of success": It shouldn't break in any standard JS environment and err on the side of disabled.
-2. Easy to detect by build tools with a low failure rate.
-3. Supported by default across different build tools, with no manual setup required. This implies: It should be maximally compatible with existing code.
+The heading is a bit of a spoiler - let's recap first. What makes a good guard for debug code?
+
+1. Easy to use by developers with a "pit of success": It shouldn't break in any standard JS environment and err on the side of being turned off.
+2. Easy to detect by tools with a low failure rate.
+3. Supported by default across tools, with no manual setup required. This implies: It should be maximally compatible with existing code.
 4. Cleanly maps to existing primitives so that libraries can choose to apply the guards ahead of time in their published artifacts.
 5. Tools should be able (if they so desire) to offer finer granularity than "enabled globally".
 
