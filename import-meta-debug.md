@@ -194,7 +194,9 @@ interface ImportMeta {
    *   - It SHOULD be set to `true` if the development
    *     condition is enabled.
    *   - It MUST be defined as `false` for dead code removal
-   *     purposes if the development condition is not enabled.
+   *     purposes if the production condition is enabled.
+   *   - It MAY be preserved in the output if neither of
+   *     development/production are enabled.
    */
   DEBUG?: boolean;
 }
