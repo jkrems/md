@@ -75,7 +75,7 @@ Let's dig into what's offered today. Under each option includes a note on where 
 
 ### `process.env.NODE_ENV`
 
-**Support:** Parcel, Rspack, Vite, Webpack.<br/>
+**Support:** Parcel, Rspack, Rsbuild, Vite, Webpack.<br/>
 **Graceful fallback:** Node.js, deno, bun.
 
 Let's start with the elephant in the room. `NODE_ENV`. It's the hammer everybody reached for because it existed and seemed fine, at first glance.
@@ -92,7 +92,7 @@ It _is_ generaly easy to eliminate by a minifier. That's less true though if you
 
 ### Package Exports `development`
 
-**Support:** Parcel, Rspack, Vite, Webpack.<br/>
+**Support:** Parcel, Rspack, Rsbuild, Vite, Webpack.<br/>
 **Graceful fallback:** esbuild, `@rollup/plugin-node-resolve`, Node.js, deno, bun.
 
 ```js
@@ -116,7 +116,7 @@ Option 3 would be great if it didn't require that each package maintainer reinve
 
 ### `import.meta.env.DEV`
 
-**Support:** Vite.<br/>
+**Support:** Vite, Rsbuild.<br/>
 **Graceful fallback:** bun[1].
 
 One of the spiritual successors of `NODE_ENV`. It does have two advantages:
