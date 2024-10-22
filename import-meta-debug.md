@@ -283,6 +283,9 @@ Scoping it at the package level is meaningful because it prevents zalgo when mix
         * [Mode](https://rspack.dev/config/mode#usage)
         * [Module Variables](https://rspack.dev/api/runtime-api/module-variables)
         * [Code: Package Exports conditions](https://github.com/web-infra-dev/rspack/blob/d01e85cb18a253d384d13e04eab8823d9960dc7f/packages/rspack/src/config/defaults.ts#L986)
+    * Rsbuild
+        * *Based on rspack, see previous item.*
+        * [Default Variables](https://rsbuild.dev/guide/advanced/env-vars#default-variables)
     * Vite
         * [Env Variables and Modes](https://vite.dev/guide/env-and-mode)
         * [Package Exports: `resolve.conditions`](https://vite.dev/config/shared-options.html#resolve-conditions)
